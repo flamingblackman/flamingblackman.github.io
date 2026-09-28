@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bryan Francis — Automation Specialist | RevOps & Workflow Systems</title>
+<meta name="description" content="Portfolio of Bryan Francis: workflow automation and revenue operations projects built with Zapier, JavaScript, Google Sheets, and LLMs.">
+<style>
+  :root { --bg: #fafafa; --ink: #1a1a1a; --muted: #5c5c5c; --accent: #0a66c2; --card: #ffffff; --border: #e6e6e6; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background: var(--bg); color: var(--ink); line-height: 1.6; }
+  .wrap { max-width: 760px; margin: 0 auto; padding: 48px 24px 64px; }
+  header { margin-bottom: 40px; }
+  h1 { font-size: 2rem; letter-spacing: -0.02em; margin-bottom: 4px; }
+  .tagline { color: var(--accent); font-weight: 600; margin-bottom: 16px; }
+  .lede { color: var(--muted); max-width: 60ch; }
+  .links { margin-top: 16px; display: flex; gap: 12px; flex-wrap: wrap; }
+  .links a { display: inline-block; padding: 8px 16px; border: 1px solid var(--border); border-radius: 999px; text-decoration: none; color: var(--ink); background: var(--card); font-size: 0.9rem; font-weight: 600; }
+  .links a:hover { border-color: var(--accent); color: var(--accent); }
+  h2 { font-size: 1.25rem; margin: 40px 0 16px; letter-spacing: -0.01em; }
+  .card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 24px; margin-bottom: 20px; }
+  .card h3 { font-size: 1.1rem; margin-bottom: 8px; }
+  .card p { color: var(--muted); font-size: 0.95rem; margin-bottom: 12px; }
+  .flow { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 0.82rem; background: #f1f5f9; border-radius: 8px; padding: 10px 14px; margin-bottom: 12px; overflow-x: auto; white-space: nowrap; }
+  .skills { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+  .skills span { font-size: 0.78rem; background: #eef4fb; color: var(--accent); padding: 4px 10px; border-radius: 999px; font-weight: 600; }
+  .card a.repo { color: var(--accent); font-weight: 600; text-decoration: none; font-size: 0.9rem; }
+  .card a.repo:hover { text-decoration: underline; }
+  ul.certs { list-style: none; }
+  ul.certs li { background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 12px 16px; margin-bottom: 10px; font-size: 0.95rem; }
+  ul.certs li small { display: block; color: var(--muted); font-size: 0.82rem; }
+  footer { margin-top: 48px; color: var(--muted); font-size: 0.85rem; border-top: 1px solid var(--border); padding-top: 24px; }
+  footer a { color: var(--accent); text-decoration: none; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <h1>Bryan Francis</h1>
+    <div class="tagline">Automation Specialist | RevOps &amp; Workflow Systems</div>
+    <p class="lede">IT support specialist transitioning into automation and revenue operations. I design no-code workflow automations and AI-assisted systems that remove manual work from business processes — and I can whiteboard every system I build.</p>
+    <div class="links">
+      <a href="https://www.linkedin.com/in/bfrancis360">LinkedIn</a>
+      <a href="https://github.com/flamingblackman">GitHub</a>
+    </div>
+  </header>
+
+  <h2>Projects</h2>
+
+  <div class="card">
+    <h3>Lead Tracking Automation</h3>
+    <p>A Zapier automation that turns real-estate listing emails into a living database — no manual data entry, no stale records.</p>
+    <div class="flow">Gmail search trigger &rarr; JavaScript Code step &rarr; Google Sheets Add / Update Row</div>
+    <p>The custom JavaScript step parses listing fields out of StreetEasy and Zillow emails. Rows are upserted on listing ID, so each listing is tracked as new, updated, or off-market over time. Every relevant email is logged — no filter step dropping data silently.</p>
+    <div class="skills"><span>Zapier</span><span>JavaScript</span><span>Google Sheets</span><span>Workflow Automation</span></div>
+    <a class="repo" href="https://github.com/flamingblackman/lead-tracking-automation">View on GitHub &rarr;</a>
+  </div>
+
+  <div class="card">
+    <h3>LLM State-Tracking Lab</h3>
+    <p>An experiment in long-context state management: can a language model reliably maintain conditional logic and dynamic state across long sessions?</p>
+    <div class="flow">Gemini Custom Gem (system prompt) &rarr; structured Markdown session log &rarr; human audit &rarr; NotebookLM corpus</div>
+    <p>A prompt-engineered Google Gemini Gem encodes rules, conditional logic, boundary constraints, and faction clocks, emitting a structured state log every cycle. Each log is manually audited before verified state is committed to a curated NotebookLM retrieval corpus — a human-in-the-loop QA process, not autonomous automation.</p>
+    <div class="skills"><span>Prompt Engineering</span><span>LLM State Management</span><span>RAG Tooling</span><span>Human-in-the-Loop QA</span></div>
+    <a class="repo" href="https://github.com/flamingblackman/llm-state-tracking-lab">View on GitHub &rarr;</a>
+  </div>
+
+  <h2>Certifications</h2>
+  <ul class="certs">
+    <li>CompTIA ITF+<small>CompTIA</small></li>
+    <li>Google IT Support Professional Certificate<small>Google / Coursera</small></li>
+    <li>HubSpot Revenue Operations Certification<small>In progress</small></li>
+    <li>Salesforce Administrator<small>Pursuing — Trailhead in progress</small></li>
+  </ul>
+
+  <footer>
+    <p>Open to remote Automation Specialist, RevOps Analyst, and Business Systems roles. Best reached via <a href="https://www.linkedin.com/in/bfrancis360">LinkedIn</a>.</p>
+  </footer>
+
+</div>
+</body>
+</html>
