@@ -1,83 +1,643 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Bryan Francis — Automation Specialist | RevOps & Workflow Systems</title>
-<meta name="description" content="Portfolio of Bryan Francis: workflow automation and revenue operations projects built with Zapier, JavaScript, Google Sheets, and LLMs.">
-<style>
-  :root { --bg: #fafafa; --ink: #1a1a1a; --muted: #5c5c5c; --accent: #0a66c2; --card: #ffffff; --border: #e6e6e6; }
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background: var(--bg); color: var(--ink); line-height: 1.6; }
-  .wrap { max-width: 760px; margin: 0 auto; padding: 48px 24px 64px; }
-  header { margin-bottom: 40px; }
-  h1 { font-size: 2rem; letter-spacing: -0.02em; margin-bottom: 4px; }
-  .tagline { color: var(--accent); font-weight: 600; margin-bottom: 16px; }
-  .lede { color: var(--muted); max-width: 60ch; }
-  .links { margin-top: 16px; display: flex; gap: 12px; flex-wrap: wrap; }
-  .links a { display: inline-block; padding: 8px 16px; border: 1px solid var(--border); border-radius: 999px; text-decoration: none; color: var(--ink); background: var(--card); font-size: 0.9rem; font-weight: 600; }
-  .links a:hover { border-color: var(--accent); color: var(--accent); }
-  h2 { font-size: 1.25rem; margin: 40px 0 16px; letter-spacing: -0.01em; }
-  .card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 24px; margin-bottom: 20px; }
-  .card h3 { font-size: 1.1rem; margin-bottom: 8px; }
-  .card p { color: var(--muted); font-size: 0.95rem; margin-bottom: 12px; }
-  .flow { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 0.82rem; background: #f1f5f9; border-radius: 8px; padding: 10px 14px; margin-bottom: 12px; overflow-x: auto; white-space: nowrap; }
-  .skills { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
-  .skills span { font-size: 0.78rem; background: #eef4fb; color: var(--accent); padding: 4px 10px; border-radius: 999px; font-weight: 600; }
-  .card a.repo { color: var(--accent); font-weight: 600; text-decoration: none; font-size: 0.9rem; }
-  .card a.repo:hover { text-decoration: underline; }
-  ul.certs { list-style: none; }
-  ul.certs li { background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 12px 16px; margin-bottom: 10px; font-size: 0.95rem; }
-  ul.certs li small { display: block; color: var(--muted); font-size: 0.82rem; }
-  footer { margin-top: 48px; color: var(--muted); font-size: 0.85rem; border-top: 1px solid var(--border); padding-top: 24px; }
-  footer a { color: var(--accent); text-decoration: none; }
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bryan Francis | IT Support, Automation &amp; RevOps</title>
+  <meta name="description" content="Portfolio of Bryan Francis, a Brooklyn-based IT support professional building workflow automation and moving into Automation Specialist and RevOps Analyst roles.">
+  <meta property="og:title" content="Bryan Francis | IT Support, Automation &amp; RevOps">
+  <meta property="og:description" content="Help desk experience, workflow automation projects, and certifications from Bryan Francis.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://flamingblackman.github.io/">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230b1f3a'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='24' font-weight='700' fill='white' text-anchor='middle'%3EBF%3C/text%3E%3C/svg%3E">
+  <style>
+    :root {
+      --navy: #0b1f3a;
+      --navy-2: #12315c;
+      --ink: #172033;
+      --muted: #526075;
+      --paper: #f6f8fb;
+      --card: #ffffff;
+      --line: #dbe3ee;
+      --blue: #075db8;
+      --blue-dark: #064a93;
+      --cyan: #67e8f9;
+      --amber: #f6b352;
+      --soft-blue: #eaf3ff;
+      --soft-amber: #fff4df;
+      --shadow: 0 18px 45px rgba(11, 31, 58, 0.10);
+      --radius: 20px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-system, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background: var(--paper);
+      color: var(--ink);
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: var(--blue); }
+    a:focus-visible, button:focus-visible {
+      outline: 3px solid var(--amber);
+      outline-offset: 3px;
+    }
+
+    .skip-link {
+      position: absolute;
+      left: 1rem;
+      top: -5rem;
+      z-index: 20;
+      background: #fff;
+      color: var(--navy);
+      padding: 0.7rem 1rem;
+      border-radius: 999px;
+      font-weight: 700;
+    }
+    .skip-link:focus { top: 1rem; }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(246, 248, 251, 0.92);
+      border-bottom: 1px solid rgba(219, 227, 238, 0.9);
+      backdrop-filter: blur(14px);
+    }
+
+    .nav {
+      width: min(1120px, calc(100% - 2rem));
+      margin: 0 auto;
+      min-height: 68px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.7rem;
+      color: var(--navy);
+      text-decoration: none;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+    }
+
+    .brand-mark {
+      width: 38px;
+      height: 38px;
+      display: grid;
+      place-items: center;
+      border-radius: 11px;
+      background: var(--navy);
+      color: #fff;
+      font-size: 0.82rem;
+      box-shadow: 0 8px 20px rgba(11, 31, 58, 0.22);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .nav-links a {
+      color: #34425a;
+      text-decoration: none;
+      font-size: 0.92rem;
+      font-weight: 650;
+      padding: 0.45rem 0.7rem;
+      border-radius: 999px;
+    }
+    .nav-links a:hover { background: #e8eef7; color: var(--navy); }
+
+    .hero {
+      color: #fff;
+      background:
+        radial-gradient(circle at 82% 18%, rgba(103, 232, 249, 0.26), transparent 30%),
+        radial-gradient(circle at 12% 88%, rgba(246, 179, 82, 0.20), transparent 28%),
+        linear-gradient(135deg, var(--navy) 0%, var(--navy-2) 58%, #17457c 100%);
+      overflow: hidden;
+    }
+
+    .hero-inner {
+      width: min(1120px, calc(100% - 2rem));
+      margin: 0 auto;
+      padding: clamp(4rem, 9vw, 7.5rem) 0 clamp(4rem, 8vw, 6.5rem);
+      display: grid;
+      grid-template-columns: minmax(0, 1.35fr) minmax(300px, 0.65fr);
+      gap: clamp(2rem, 6vw, 5rem);
+      align-items: center;
+    }
+
+    .eyebrow {
+      margin: 0 0 1rem;
+      color: var(--cyan);
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    h1, h2, h3 { line-height: 1.12; letter-spacing: -0.035em; }
+    h1 {
+      margin: 0;
+      font-size: clamp(3.2rem, 8vw, 6.3rem);
+      max-width: 7.5ch;
+    }
+
+    .hero-role {
+      margin: 1.1rem 0 0;
+      color: #dbeafe;
+      font-size: clamp(1.35rem, 3vw, 2.15rem);
+      font-weight: 720;
+      line-height: 1.25;
+      letter-spacing: -0.025em;
+      max-width: 620px;
+    }
+
+    .hero-copy {
+      margin: 1.35rem 0 0;
+      color: #d7e2f0;
+      font-size: 1.08rem;
+      max-width: 650px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      margin-top: 2rem;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.45rem;
+      min-height: 48px;
+      padding: 0.75rem 1.15rem;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      font-weight: 750;
+      text-decoration: none;
+      transition: transform 160ms ease, background 160ms ease, border-color 160ms ease;
+    }
+    .button:hover { transform: translateY(-1px); }
+    .button-primary { background: #fff; color: var(--navy); }
+    .button-primary:hover { background: #eaf3ff; }
+    .button-secondary { background: rgba(255,255,255,0.08); color: #fff; border-color: rgba(255,255,255,0.42); }
+    .button-secondary:hover { background: rgba(255,255,255,0.15); }
+    .button-dark { background: var(--navy); color: #fff; }
+    .button-dark:hover { background: var(--blue-dark); }
+    .button-light { background: #fff; color: var(--navy); border-color: var(--line); }
+    .button-light:hover { border-color: #a9bed8; }
+
+    .focus-card {
+      background: rgba(255, 255, 255, 0.96);
+      color: var(--ink);
+      border-radius: 24px;
+      padding: 1.5rem;
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.24);
+    }
+    .focus-card h2 {
+      margin: 0 0 1rem;
+      font-size: 1.05rem;
+      letter-spacing: -0.015em;
+    }
+    .focus-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 1rem; }
+    .focus-list li { display: grid; grid-template-columns: 12px 1fr; gap: 0.75rem; }
+    .focus-list li::before {
+      content: "";
+      width: 9px;
+      height: 9px;
+      margin-top: 0.52rem;
+      border-radius: 50%;
+      background: var(--blue);
+      box-shadow: 0 0 0 4px var(--soft-blue);
+    }
+    .focus-list strong { display: block; color: var(--navy); font-size: 0.98rem; }
+    .focus-list span { display: block; color: var(--muted); font-size: 0.92rem; line-height: 1.5; }
+
+    main { overflow: hidden; }
+    .section {
+      width: min(1120px, calc(100% - 2rem));
+      margin: 0 auto;
+      padding: clamp(3.8rem, 8vw, 6rem) 0 0;
+      scroll-margin-top: 92px;
+    }
+    .section:last-child { padding-bottom: clamp(4rem, 8vw, 6rem); }
+
+    .section-heading { max-width: 720px; margin-bottom: 2rem; }
+    .section-heading .eyebrow { color: var(--blue); margin-bottom: 0.65rem; }
+    .section-heading h2 {
+      margin: 0;
+      color: var(--navy);
+      font-size: clamp(2rem, 4.5vw, 3.2rem);
+    }
+    .section-heading p {
+      margin: 0.9rem 0 0;
+      color: var(--muted);
+      font-size: 1.03rem;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.15fr) minmax(300px, 0.85fr);
+      gap: 1.25rem;
+      align-items: start;
+    }
+
+    .panel, .skill-card, .cert-card, .project-card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: 0 8px 26px rgba(11, 31, 58, 0.05);
+    }
+
+    .panel { padding: clamp(1.4rem, 3vw, 2rem); }
+    .panel p { margin: 0; color: var(--muted); }
+    .panel p + p { margin-top: 1rem; }
+    .panel strong { color: var(--ink); }
+
+    .experience-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 0; }
+    .experience-list li {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 1rem 0;
+      border-bottom: 1px solid var(--line);
+    }
+    .experience-list li:first-child { padding-top: 0; }
+    .experience-list li:last-child { border-bottom: 0; padding-bottom: 0; }
+    .experience-list strong { display: block; color: var(--navy); }
+    .experience-list span { display: block; color: var(--muted); font-size: 0.92rem; }
+    .experience-list time { color: var(--muted); font-size: 0.88rem; white-space: nowrap; }
+
+    .skills-grid, .cert-grid, .project-grid {
+      display: grid;
+      gap: 1.25rem;
+    }
+    .skills-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .skill-card { padding: 1.45rem; }
+    .skill-card h3, .cert-card h3, .project-card h3 { margin: 0; color: var(--navy); }
+    .skill-card h3 { font-size: 1.08rem; margin-bottom: 1rem; }
+    .chip-list { display: flex; flex-wrap: wrap; gap: 0.5rem; list-style: none; margin: 0; padding: 0; }
+    .chip-list li {
+      background: var(--soft-blue);
+      color: #123f75;
+      border: 1px solid #cfdff5;
+      border-radius: 999px;
+      padding: 0.36rem 0.65rem;
+      font-size: 0.84rem;
+      font-weight: 680;
+      line-height: 1.3;
+    }
+
+    .cert-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .cert-card { padding: 1.5rem; position: relative; overflow: hidden; }
+    .cert-card::before {
+      content: "";
+      position: absolute;
+      inset: 0 auto 0 0;
+      width: 5px;
+      background: var(--blue);
+    }
+    .cert-card:nth-child(3)::before { background: var(--amber); }
+    .cert-card p { margin: 0.55rem 0 0; color: var(--muted); font-size: 0.94rem; }
+    .cert-card .issuer { margin-top: 1rem; color: var(--ink); font-weight: 720; font-size: 0.9rem; }
+
+    .project-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .project-card {
+      padding: clamp(1.5rem, 3vw, 2rem);
+      display: flex;
+      flex-direction: column;
+      min-height: 100%;
+    }
+    .project-label {
+      align-self: flex-start;
+      margin-bottom: 1rem;
+      padding: 0.35rem 0.65rem;
+      border-radius: 999px;
+      background: var(--soft-amber);
+      color: #7a4700;
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+    .project-card:nth-child(2) .project-label { background: var(--soft-blue); color: #123f75; }
+    .project-card h3 { font-size: clamp(1.45rem, 2.6vw, 2rem); }
+    .project-card p { color: var(--muted); margin: 1rem 0 0; }
+    .flow {
+      margin-top: 1.25rem;
+      padding: 0.9rem 1rem;
+      border-radius: 13px;
+      background: #eef4fb;
+      color: #29405f;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 0.82rem;
+      line-height: 1.55;
+      overflow-wrap: anywhere;
+    }
+    .project-card .chip-list { margin-top: 1.25rem; }
+    .project-link {
+      margin-top: auto;
+      padding-top: 1.4rem;
+      font-weight: 800;
+      text-underline-offset: 4px;
+    }
+
+    .contact-card {
+      background: var(--navy);
+      color: #fff;
+      border-radius: 28px;
+      padding: clamp(2rem, 5vw, 3.5rem);
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 2rem;
+      align-items: center;
+      box-shadow: var(--shadow);
+    }
+    .contact-card h2 { margin: 0; font-size: clamp(2rem, 4.5vw, 3.3rem); }
+    .contact-card p { color: #d7e2f0; margin: 1rem 0 0; max-width: 650px; }
+    .contact-actions { display: flex; flex-wrap: wrap; gap: 0.8rem; justify-content: flex-end; }
+
+    footer {
+      width: min(1120px, calc(100% - 2rem));
+      margin: 0 auto;
+      padding: 0 0 2rem;
+      color: var(--muted);
+      font-size: 0.9rem;
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    footer a { font-weight: 700; text-underline-offset: 3px; }
+
+    @media (max-width: 900px) {
+      .hero-inner, .about-grid, .contact-card { grid-template-columns: 1fr; }
+      .focus-card { max-width: 620px; }
+      .skills-grid, .cert-grid { grid-template-columns: 1fr 1fr; }
+      .project-grid { grid-template-columns: 1fr; }
+      .contact-actions { justify-content: flex-start; }
+    }
+
+    @media (max-width: 620px) {
+      .nav { align-items: flex-start; flex-direction: column; padding: 0.8rem 0; }
+      .nav-links { justify-content: flex-start; }
+      .nav-links a { padding-left: 0.45rem; padding-right: 0.45rem; }
+      .hero-inner { padding-top: 3.4rem; }
+      .skills-grid, .cert-grid { grid-template-columns: 1fr; }
+      .experience-list li { flex-direction: column; gap: 0.15rem; }
+      .experience-list time { white-space: normal; }
+      .button { width: 100%; }
+      .hero-actions .button, .contact-actions .button { width: auto; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .button { transition: none; }
+      .button:hover { transform: none; }
+    }
+  </style>
 </head>
 <body>
-<div class="wrap">
+  <a class="skip-link" href="#main">Skip to content</a>
 
-  <header>
-    <h1>Bryan Francis</h1>
-    <div class="tagline">Automation Specialist | RevOps &amp; Workflow Systems</div>
-    <p class="lede">IT support specialist transitioning into automation and revenue operations. I design no-code workflow automations and AI-assisted systems that remove manual work from business processes — and I can whiteboard every system I build.</p>
-    <div class="links">
-      <a href="https://www.linkedin.com/in/bfrancis360">LinkedIn</a>
-      <a href="https://github.com/flamingblackman">GitHub</a>
-    </div>
+  <header class="site-header">
+    <nav class="nav" aria-label="Primary">
+      <a class="brand" href="#top" aria-label="Bryan Francis home">
+        <span class="brand-mark" aria-hidden="true">BF</span>
+        <span>Bryan Francis</span>
+      </a>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#certifications">Certifications</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </nav>
   </header>
 
-  <h2>Projects</h2>
+  <section class="hero" id="top" aria-labelledby="page-title">
+    <div class="hero-inner">
+      <div>
+        <p class="eyebrow">Brooklyn, New York</p>
+        <h1 id="page-title">Bryan Francis</h1>
+        <p class="hero-role">IT support experience. Automation and RevOps direction.</p>
+        <p class="hero-copy">I solve technical problems, document the work clearly, and look for the repeated steps that should become a cleaner process. My next step is Automation Specialist or RevOps Analyst work.</p>
+        <div class="hero-actions" aria-label="Portfolio links">
+          <a class="button button-primary" href="#projects">View projects</a>
+          <a class="button button-secondary" href="https://www.linkedin.com/in/bfrancis360" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+          <a class="button button-secondary" href="https://github.com/flamingblackman" target="_blank" rel="noopener noreferrer">GitHub</a>
+        </div>
+      </div>
 
-  <div class="card">
-    <h3>Lead Tracking Automation</h3>
-    <p>A Zapier automation that turns real-estate listing emails into a living database — no manual data entry, no stale records.</p>
-    <div class="flow">Gmail search trigger &rarr; JavaScript Code step &rarr; Google Sheets Add / Update Row</div>
-    <p>The custom JavaScript step parses listing fields out of StreetEasy and Zillow emails. Rows are upserted on listing ID, so each listing is tracked as new, updated, or off-market over time. Every relevant email is logged — no filter step dropping data silently.</p>
-    <div class="skills"><span>Zapier</span><span>JavaScript</span><span>Google Sheets</span><span>Workflow Automation</span></div>
-    <a class="repo" href="https://github.com/flamingblackman/lead-tracking-automation">View on GitHub &rarr;</a>
-  </div>
+      <aside class="focus-card" aria-labelledby="focus-title">
+        <h2 id="focus-title">Current focus</h2>
+        <ul class="focus-list">
+          <li>
+            <div>
+              <strong>Workflow automation</strong>
+              <span>Zapier and Google Sheets projects that turn incoming information into organized records.</span>
+            </div>
+          </li>
+          <li>
+            <div>
+              <strong>Revenue operations</strong>
+              <span>HubSpot Revenue Operations certification, earned October 19, 2026.</span>
+            </div>
+          </li>
+          <li>
+            <div>
+              <strong>Support that stays useful</strong>
+              <span>Clear troubleshooting, accurate tickets, and step by step help for the person on the other end.</span>
+            </div>
+          </li>
+        </ul>
+      </aside>
+    </div>
+  </section>
 
-  <div class="card">
-    <h3>LLM State-Tracking Lab</h3>
-    <p>An experiment in long-context state management: can a language model reliably maintain conditional logic and dynamic state across long sessions?</p>
-    <div class="flow">Gemini Custom Gem (system prompt) &rarr; structured Markdown session log &rarr; human audit &rarr; NotebookLM corpus</div>
-    <p>A prompt-engineered Google Gemini Gem encodes rules, conditional logic, boundary constraints, and faction clocks, emitting a structured state log every cycle. Each log is manually audited before verified state is committed to a curated NotebookLM retrieval corpus — a human-in-the-loop QA process, not autonomous automation.</p>
-    <div class="skills"><span>Prompt Engineering</span><span>LLM State Management</span><span>RAG Tooling</span><span>Human-in-the-Loop QA</span></div>
-    <a class="repo" href="https://github.com/flamingblackman/llm-state-tracking-lab">View on GitHub &rarr;</a>
-  </div>
+  <main id="main">
+    <section class="section" id="about" aria-labelledby="about-title">
+      <div class="section-heading">
+        <p class="eyebrow">About</p>
+        <h2 id="about-title">Support first. Systems next.</h2>
+        <p>My background is hands-on help desk and end user support. That work taught me to slow down, find the actual problem, and leave a record someone else can follow.</p>
+      </div>
 
-  <h2>Certifications</h2>
-  <ul class="certs">
-    <li>CompTIA ITF+<small>CompTIA</small></li>
-    <li>Google IT Support Professional Certificate<small>Google / Coursera</small></li>
-    <li>HubSpot Revenue Operations Certification<small>In progress</small></li>
-    <li>Salesforce Administrator<small>Pursuing — Trailhead in progress</small></li>
-  </ul>
+      <div class="about-grid">
+        <article class="panel">
+          <p><strong>I have worked in IT support roles at DecisionOne, Ellucian, Tiffany &amp; Co., and Ovation Travel.</strong> The work included account access, troubleshooting, ticket queues, documentation, device support, and helping non-technical users work through a fix.</p>
+          <p>I am now building toward Automation Specialist and RevOps Analyst roles. The through line is simple: understand the process, clean up the handoffs, and make the record easier to trust.</p>
+        </article>
+
+        <article class="panel" aria-labelledby="experience-title">
+          <h3 id="experience-title" style="margin:0 0 0.75rem;color:var(--navy);">Experience snapshot</h3>
+          <ul class="experience-list">
+            <li>
+              <div><strong>DecisionOne</strong><span>Help Desk Analyst</span></div>
+              <time>2023 to 2024</time>
+            </li>
+            <li>
+              <div><strong>Ellucian</strong><span>Help Desk Analyst</span></div>
+              <time>2023</time>
+            </li>
+            <li>
+              <div><strong>Tiffany &amp; Co.</strong><span>IT Support Specialist</span></div>
+              <time>2020 to 2021</time>
+            </li>
+            <li>
+              <div><strong>Ovation Travel</strong><span>Helpdesk Support Technician</span></div>
+              <time>2019 to 2020</time>
+            </li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="skills" aria-labelledby="skills-title">
+      <div class="section-heading">
+        <p class="eyebrow">Skills</p>
+        <h2 id="skills-title">Tools I have used in real work</h2>
+        <p>A practical mix of support, systems, and automation tools. The point is not the list. It is knowing which tool fits the problem in front of me.</p>
+      </div>
+
+      <div class="skills-grid">
+        <article class="skill-card">
+          <h3>IT support</h3>
+          <ul class="chip-list">
+            <li>Technical Support</li>
+            <li>End User Support</li>
+            <li>Desktop Support</li>
+            <li>Ticket Triage</li>
+            <li>Documentation</li>
+            <li>Account Access</li>
+            <li>Device Troubleshooting</li>
+          </ul>
+        </article>
+
+        <article class="skill-card">
+          <h3>Systems and platforms</h3>
+          <ul class="chip-list">
+            <li>Active Directory (AD)</li>
+            <li>Okta</li>
+            <li>Microsoft 365 (Office 365)</li>
+            <li>ServiceNow</li>
+            <li>Cherwell</li>
+            <li>TeamDynamix</li>
+            <li>ScreenConnect</li>
+            <li>SCCM Device Lookup</li>
+          </ul>
+        </article>
+
+        <article class="skill-card">
+          <h3>Automation and RevOps</h3>
+          <ul class="chip-list">
+            <li>Zapier</li>
+            <li>Google Sheets</li>
+            <li>AI-Generated JavaScript</li>
+            <li>Workflow Design</li>
+            <li>HubSpot</li>
+            <li>Process Documentation</li>
+            <li>Record Tracking</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="certifications" aria-labelledby="certifications-title">
+      <div class="section-heading">
+        <p class="eyebrow">Certifications</p>
+        <h2 id="certifications-title">Credentials</h2>
+        <p>Formal training behind the support background and the RevOps pivot.</p>
+      </div>
+
+      <div class="cert-grid">
+        <article class="cert-card">
+          <h3>CompTIA ITF+</h3>
+          <p>Foundational IT concepts, infrastructure, software, security, and troubleshooting.</p>
+          <p class="issuer">CompTIA</p>
+        </article>
+        <article class="cert-card">
+          <h3>Google IT Support Professional Certificate</h3>
+          <p>Professional training in IT support, systems administration basics, networking, and security.</p>
+          <p class="issuer">Google / Coursera</p>
+        </article>
+        <article class="cert-card">
+          <h3>HubSpot Revenue Operations Certification</h3>
+          <p>Revenue operations training covering the systems and processes that connect go-to-market teams.</p>
+          <p class="issuer">HubSpot · Earned October 19, 2026</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="projects" aria-labelledby="projects-title">
+      <div class="section-heading">
+        <p class="eyebrow">Projects</p>
+        <h2 id="projects-title">Work that shows the direction</h2>
+        <p>Two projects, two sides of the same habit: take messy information, give it structure, and check the result.</p>
+      </div>
+
+      <div class="project-grid">
+        <article class="project-card">
+          <span class="project-label">Automation project</span>
+          <h3>Real Estate Lead Tracking Automation</h3>
+          <p>This Zapier workflow captures Zillow and StreetEasy inquiry emails and logs them in Google Sheets. I directed the build and used AI-generated JavaScript to parse inquiry details into a structured record.</p>
+          <div class="flow" aria-label="Lead tracking workflow">Email inquiry → Zapier → AI-generated JavaScript parsing → Google Sheets log</div>
+          <ul class="chip-list" aria-label="Lead tracking tools">
+            <li>Zapier</li>
+            <li>Google Sheets</li>
+            <li>AI-Generated JavaScript</li>
+            <li>Workflow Design</li>
+          </ul>
+          <a class="project-link" href="https://github.com/flamingblackman/lead-tracking-automation" target="_blank" rel="noopener noreferrer">View the repository</a>
+        </article>
+
+        <article class="project-card">
+          <span class="project-label">Research project</span>
+          <h3>LLM State-Tracking Lab</h3>
+          <p>This project tests whether a language model can maintain rules, conditional logic, and changing state across long sessions. Structured Markdown logs make each change visible, and human review checks the state before it is accepted.</p>
+          <div class="flow" aria-label="State tracking workflow">Prompt rules → Structured session log → Human audit → Curated reference corpus</div>
+          <ul class="chip-list" aria-label="State tracking tools">
+            <li>Prompt Engineering</li>
+            <li>LLM State Management</li>
+            <li>Markdown Logs</li>
+            <li>Human Review</li>
+          </ul>
+          <a class="project-link" href="https://github.com/flamingblackman/llm-state-tracking-lab" target="_blank" rel="noopener noreferrer">View the repository</a>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="contact" aria-labelledby="contact-title">
+      <div class="contact-card">
+        <div>
+          <h2 id="contact-title">Contact</h2>
+          <p>I am interested in Automation Specialist, RevOps Analyst, and business systems roles, along with IT support work that fits my background. LinkedIn is the best place to reach me.</p>
+        </div>
+        <div class="contact-actions">
+          <a class="button button-primary" href="https://www.linkedin.com/in/bfrancis360" target="_blank" rel="noopener noreferrer">Connect on LinkedIn</a>
+          <a class="button button-secondary" href="https://github.com/flamingblackman" target="_blank" rel="noopener noreferrer">See GitHub</a>
+        </div>
+      </div>
+    </section>
+  </main>
 
   <footer>
-    <p>Open to remote Automation Specialist, RevOps Analyst, and Business Systems roles. Best reached via <a href="https://www.linkedin.com/in/bfrancis360">LinkedIn</a>.</p>
+    <span>© 2026 Bryan Francis · Brooklyn, New York</span>
+    <span><a href="#top">Back to top</a></span>
   </footer>
-
-</div>
 </body>
 </html>
