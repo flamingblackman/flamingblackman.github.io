@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Bryan Francis | IT Support, Automation &amp; RevOps</title>
-  <meta name="description" content="Portfolio of Bryan Francis, a Brooklyn-based IT support professional building workflow automation and moving into Automation Specialist and RevOps Analyst roles.">
-  <meta property="og:title" content="Bryan Francis | IT Support, Automation &amp; RevOps">
-  <meta property="og:description" content="Help desk experience, workflow automation projects, and certifications from Bryan Francis.">
+  <title>Bryan Francis | Revenue Operations &amp; Automation</title>
+  <meta name="description" content="Portfolio of Bryan Francis, a Brooklyn-based automation builder moving into RevOps and Automation Specialist roles. Zapier pipelines, state-tracking systems, and a deterministic world engine.">
+  <meta property="og:title" content="Bryan Francis | Revenue Operations &amp; Automation">
+  <meta property="og:description" content="Systems that move work through a pipeline: Zapier automation, LLM state tracking, and a deterministic living-world engine.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://flamingblackman.github.io/">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23060913'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='24' font-weight='700' fill='%2367e8f9' text-anchor='middle'%3EBF%3C/text%3E%3C/svg%3E">
@@ -180,6 +180,21 @@
       margin: 1.35rem 0 0;
       color: #b9c6d8;
       font-size: 1.08rem;
+      max-width: 650px;
+    }
+
+    .hero-pipeline {
+      margin-top: 1.5rem;
+      padding: 0.9rem 1rem;
+      border-radius: 13px;
+      background: rgba(7, 13, 28, 0.85);
+      border: 1px solid rgba(103, 232, 249, 0.25);
+      border-left: 3px solid var(--cyan);
+      color: #a5f3fc;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 0.82rem;
+      line-height: 1.55;
+      overflow-wrap: anywhere;
       max-width: 650px;
     }
 
@@ -359,6 +374,8 @@
       text-transform: uppercase;
     }
     .project-card:nth-child(2) .project-label { background: rgba(103, 232, 249, 0.10); border-color: rgba(103, 232, 249, 0.4); color: #a5f3fc; }
+    .project-card:nth-child(3) .project-label { background: rgba(246, 179, 82, 0.12); border-color: rgba(246, 179, 82, 0.45); color: #fde68a; }
+    .project-card:nth-child(4) .project-label { background: rgba(232, 121, 249, 0.12); border-color: rgba(232, 121, 249, 0.45); color: #f5d0fe; }
     .project-card h3 { font-size: clamp(1.45rem, 2.6vw, 2rem); }
     .project-card p { color: var(--muted); margin: 1rem 0 0; }
     .flow {
@@ -380,6 +397,22 @@
       padding-top: 1.4rem;
       font-weight: 800;
       text-underline-offset: 4px;
+    }
+    .project-note {
+      margin-top: auto;
+      padding-top: 1.4rem;
+      color: var(--amber);
+      font-weight: 700;
+      font-size: 0.92rem;
+    }
+
+    .interests-panel { padding: clamp(1.4rem, 3vw, 2rem); }
+    .interests-panel p { margin: 0; color: var(--muted); }
+    .interests-panel .chip-list { margin-top: 1.25rem; }
+    .interests-panel .chip-list li {
+      background: rgba(232, 121, 249, 0.10);
+      color: #f5d0fe;
+      border-color: rgba(232, 121, 249, 0.4);
     }
 
     .contact-card {
@@ -464,10 +497,11 @@
   <section class="hero" id="top" aria-labelledby="page-title">
     <div class="hero-inner">
       <div>
-        <p class="eyebrow">Brooklyn, New York</p>
+        <p class="eyebrow">Brooklyn, New York · Available immediately for remote work</p>
         <h1 id="page-title">Bryan Francis</h1>
-        <p class="hero-role">IT support experience. Automation and RevOps direction.</p>
-        <p class="hero-copy">I solve technical problems, document the work clearly, and look for the repeated steps that should become a cleaner process. My next step is Automation Specialist or RevOps Analyst work.</p>
+        <p class="hero-role">Revenue operations and automation.</p>
+        <p class="hero-copy">I build systems that move work through a pipeline. A Zapier automation with AI-generated JavaScript parses listing alerts into one Google Sheets row per listing, duplicates blocked, status tracked as new, updated, or off market. As a freelance technical recruiter I ran candidate pipelines: sourcing, screening, and stage tracking. HubSpot Revenue Operations certified. At DecisionOne I resolved 89% of cases on first contact.</p>
+        <div class="hero-pipeline" aria-label="Pipeline, in one line">Alert email in → AI-generated JavaScript parses it → one row per listing → status tracked</div>
         <div class="hero-actions" aria-label="Portfolio links">
           <a class="button button-primary" href="#projects">View projects</a>
           <a class="button button-secondary" href="https://www.linkedin.com/in/bfrancis360" target="_blank" rel="noopener noreferrer">LinkedIn</a>
@@ -480,20 +514,20 @@
         <ul class="focus-list">
           <li>
             <div>
-              <strong>Workflow automation</strong>
-              <span>Zapier and Google Sheets projects that turn incoming information into organized records.</span>
-            </div>
-          </li>
-          <li>
-            <div>
               <strong>Revenue operations</strong>
-              <span>HubSpot Revenue Operations certification, earned October 19, 2026.</span>
+              <span>HubSpot Revenue Operations certification, earned October 19, 2026. Pipeline thinking: stages, conversion, attribution.</span>
             </div>
           </li>
           <li>
             <div>
-              <strong>Support that stays useful</strong>
-              <span>Clear troubleshooting, accurate tickets, and step by step help for the person on the other end.</span>
+              <strong>Automation builds</strong>
+              <span>Zapier and Google Sheets systems that turn incoming information into organized, checkable records.</span>
+            </div>
+          </li>
+          <li>
+            <div>
+              <strong>Proof, not claims</strong>
+              <span>Every build has a repo, a runbook, and a check. If it is not measured, it is not on this page.</span>
             </div>
           </li>
         </ul>
@@ -512,11 +546,12 @@
       <div class="about-grid">
         <article class="panel">
           <p><strong>I have worked in IT support roles at DecisionOne, Ellucian, Tiffany &amp; Co., and Ovation Travel.</strong> The work included account access, troubleshooting, ticket queues, documentation, device support, and helping non-technical users work through a fix.</p>
+          <p>As a freelance technical recruiter (2022–2023) I ran candidate pipelines: sourcing, screening, and stage tracking. That is where the pipeline habit started — every candidate a record, every stage a status, nothing lost in an inbox.</p>
           <p>I am now building toward Automation Specialist and RevOps Analyst roles. The through line is simple: understand the process, clean up the handoffs, and make the record easier to trust.</p>
         </article>
 
         <article class="panel" aria-labelledby="experience-title">
-          <h3 id="experience-title" style="margin:0 0 0.75rem;color:var(--navy);">Experience snapshot</h3>
+          <h3 id="experience-title" style="margin:0 0 0.75rem;color:#fff;">Experience snapshot</h3>
           <ul class="experience-list">
             <li>
               <div><strong>DecisionOne</strong><span>Help Desk Analyst</span></div>
@@ -525,6 +560,10 @@
             <li>
               <div><strong>Ellucian</strong><span>Help Desk Analyst</span></div>
               <time>2023</time>
+            </li>
+            <li>
+              <div><strong>Freelance Technical Recruiter</strong><span>Candidate pipelines</span></div>
+              <time>2022 to 2023</time>
             </li>
             <li>
               <div><strong>Tiffany &amp; Co.</strong><span>IT Support Specialist</span></div>
@@ -542,21 +581,24 @@
     <section class="section" id="skills" aria-labelledby="skills-title">
       <div class="section-heading">
         <p class="eyebrow">Skills</p>
-        <h2 id="skills-title">Tools I have used in real work</h2>
-        <p>A practical mix of support, systems, and automation tools. The point is not the list. It is knowing which tool fits the problem in front of me.</p>
+        <h2 id="skills-title">Automation first, support underneath</h2>
+        <p>The support background is the foundation. The direction is systems: pipelines, records, and checks that hold up without me watching them.</p>
       </div>
 
       <div class="skills-grid">
         <article class="skill-card">
-          <h3>IT support</h3>
+          <h3>Automation and RevOps</h3>
           <ul class="chip-list">
-            <li>Technical Support</li>
-            <li>End User Support</li>
-            <li>Desktop Support</li>
-            <li>Ticket Triage</li>
-            <li>Documentation</li>
-            <li>Account Access</li>
-            <li>Device Troubleshooting</li>
+            <li>Zapier</li>
+            <li>Google Sheets</li>
+            <li>AI-Generated JavaScript</li>
+            <li>Pipeline Design</li>
+            <li>Status Tracking</li>
+            <li>Workflow Design</li>
+            <li>HubSpot</li>
+            <li>Process Documentation</li>
+            <li>Record Tracking</li>
+            <li>SQL (in progress)</li>
           </ul>
         </article>
 
@@ -575,15 +617,15 @@
         </article>
 
         <article class="skill-card">
-          <h3>Automation and RevOps</h3>
+          <h3>IT support</h3>
           <ul class="chip-list">
-            <li>Zapier</li>
-            <li>Google Sheets</li>
-            <li>AI-Generated JavaScript</li>
-            <li>Workflow Design</li>
-            <li>HubSpot</li>
-            <li>Process Documentation</li>
-            <li>Record Tracking</li>
+            <li>Technical Support</li>
+            <li>End User Support</li>
+            <li>Desktop Support</li>
+            <li>Ticket Triage</li>
+            <li>Documentation</li>
+            <li>Account Access</li>
+            <li>Device Troubleshooting</li>
           </ul>
         </article>
       </div>
@@ -598,6 +640,11 @@
 
       <div class="cert-grid">
         <article class="cert-card">
+          <h3>HubSpot Revenue Operations Certification</h3>
+          <p>Revenue operations training covering the systems and processes that connect go-to-market teams.</p>
+          <p class="issuer">HubSpot · Earned October 19, 2026</p>
+        </article>
+        <article class="cert-card">
           <h3>CompTIA ITF+</h3>
           <p>Foundational IT concepts, infrastructure, software, security, and troubleshooting.</p>
           <p class="issuer">CompTIA</p>
@@ -607,26 +654,35 @@
           <p>Professional training in IT support, systems administration basics, networking, and security.</p>
           <p class="issuer">Google / Coursera</p>
         </article>
-        <article class="cert-card">
-          <h3>HubSpot Revenue Operations Certification</h3>
-          <p>Revenue operations training covering the systems and processes that connect go-to-market teams.</p>
-          <p class="issuer">HubSpot · Earned October 19, 2026</p>
-        </article>
       </div>
     </section>
 
     <section class="section" id="projects" aria-labelledby="projects-title">
       <div class="section-heading">
         <p class="eyebrow">Projects</p>
-        <h2 id="projects-title">Work that shows the direction</h2>
-        <p>Two projects, two sides of the same habit: take messy information, give it structure, and check the result.</p>
+        <h2 id="projects-title">Systems I built, not side projects</h2>
+        <p>Four builds, one habit: take messy information, give it structure, and check the result. Ordered by how close each one sits to the RevOps work I want next.</p>
       </div>
 
       <div class="project-grid">
         <article class="project-card">
+          <span class="project-label">Flagship project</span>
+          <h3>LLM State-Tracking Lab</h3>
+          <p>A test environment asking whether a prompt-engineered LLM can keep coherent state across long sessions. Structured turn blocks, self-audits every 5 turns, a human audit gate, and a NotebookLM retrieval corpus. Reference implementation: a Jujutsu Kaisen saga, clean test re-run 17 PASS / 0 PARTIAL / 0 FAIL.</p>
+          <div class="flow" aria-label="State tracking workflow">Prompt rules → Structured session log → Human audit → Curated reference corpus</div>
+          <ul class="chip-list" aria-label="State tracking tools">
+            <li>Prompt Engineering</li>
+            <li>LLM State Management</li>
+            <li>Markdown Logs</li>
+            <li>Human Review</li>
+          </ul>
+          <a class="project-link" href="https://github.com/flamingblackman/llm-state-tracking-lab" target="_blank" rel="noopener noreferrer">View the repository</a>
+        </article>
+
+        <article class="project-card">
           <span class="project-label">Automation project</span>
           <h3>Real Estate Lead Tracking Automation</h3>
-          <p>This Zapier workflow captures Zillow and StreetEasy inquiry emails and logs them in Google Sheets. I directed the build and used AI-generated JavaScript to parse inquiry details into a structured record.</p>
+          <p>A Zapier workflow that parses Zillow and StreetEasy alert emails into one Google Sheets row per listing, duplicates blocked, status tracked as new, updated, or off market. I built it for my own apartment search, and it replaced checking both sites by hand. I directed the build and used AI-generated JavaScript to parse the details into a structured record.</p>
           <p>Currently paused (Zapier trial expired); the build is documented in the linked repository.</p>
           <div class="flow" aria-label="Lead tracking workflow">Email inquiry → Zapier → AI-generated JavaScript parsing → Google Sheets log</div>
           <ul class="chip-list" aria-label="Lead tracking tools">
@@ -639,19 +695,53 @@
         </article>
 
         <article class="project-card">
-          <span class="project-label">Research project</span>
-          <h3>LLM State-Tracking Lab</h3>
-          <p>This project tests whether a language model can maintain rules, conditional logic, and changing state across long sessions. Structured Markdown logs make each change visible, and human review checks the state before it is accepted.</p>
-          <div class="flow" aria-label="State tracking workflow">Prompt rules → Structured session log → Human audit → Curated reference corpus</div>
-          <ul class="chip-list" aria-label="State tracking tools">
-            <li>Prompt Engineering</li>
-            <li>LLM State Management</li>
-            <li>Markdown Logs</li>
-            <li>Human Review</li>
+          <span class="project-label">Building now</span>
+          <h3>Client Onboarding Portal</h3>
+          <p>An intake portal for client onboarding: a form feeds a Sheets log, and a status dashboard flags what needs attention — New intakes over one business day, follow-up dates on Contacted, clean close-out on Onboarded. Intake form and log sheet are live; the Zaps come next.</p>
+          <div class="flow" aria-label="Onboarding workflow">Intake form → Sheets log → Status dashboard → SLA flags</div>
+          <ul class="chip-list" aria-label="Onboarding tools">
+            <li>Google Forms</li>
+            <li>Google Sheets</li>
+            <li>Status Pipeline</li>
+            <li>SLA Flags</li>
           </ul>
-          <a class="project-link" href="https://github.com/flamingblackman/llm-state-tracking-lab" target="_blank" rel="noopener noreferrer">View the repository</a>
+          <span class="project-note">Sheet + intake form live; Zaps next — repo coming.</span>
+        </article>
+
+        <article class="project-card">
+          <span class="project-label">Technical depth</span>
+          <h3>Ironwild Living World Engine</h3>
+          <p>A deterministic tick engine for a forked original mecha world: seed in, ticks out, hash-chained event log. Python 3 stdlib + SQLite, no LLM ever writes state. 105 tests passing, Phase 2 building. An AI-assisted build I directed and verified against acceptance checks.</p>
+          <div class="flow" aria-label="Engine workflow">Seed v1.6 → Tick loop → Append-only event log → World view</div>
+          <ul class="chip-list" aria-label="Engine tools">
+            <li>Python</li>
+            <li>SQLite</li>
+            <li>Deterministic Simulation</li>
+            <li>Test Suite</li>
+          </ul>
+          <a class="project-link" href="https://github.com/flamingblackman/ironwild-living-world-engine" target="_blank" rel="noopener noreferrer">View the repository</a>
         </article>
       </div>
+    </section>
+
+    <section class="section" id="interests" aria-labelledby="interests-title">
+      <div class="section-heading">
+        <p class="eyebrow">Beyond the work</p>
+        <h2 id="interests-title">What I build when nobody is paying me</h2>
+        <p>The same instinct, pointed at fun: systems with rules, state that has to stay honest, and worlds that keep moving when I am not watching.</p>
+      </div>
+
+      <article class="panel interests-panel">
+        <p>Living-world simulations and deterministic systems. Mecha — Zoids × Gaogaigar is the DNA of the Ironwild engine. Dragon Ball and Jujutsu Kaisen worldbuilding, long-form continuity and all. Boxing, jump rope, getting solid.</p>
+        <ul class="chip-list" aria-label="Interests">
+          <li>Living-World Simulations</li>
+          <li>Mecha · Zoids × Gaogaigar</li>
+          <li>Dragon Ball Worldbuilding</li>
+          <li>Jujutsu Kaisen Worldbuilding</li>
+          <li>Boxing</li>
+          <li>Jump Rope</li>
+        </ul>
+      </article>
     </section>
 
     <section class="section" id="contact" aria-labelledby="contact-title">
@@ -674,4 +764,3 @@
   </footer>
 </body>
 </html>
-
