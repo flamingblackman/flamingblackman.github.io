@@ -379,19 +379,20 @@
       margin-left: 2px;
       animation: blink 1s steps(1) infinite;
     }
-    .mini-sheet-wrap { min-height: 8.8rem; }
+    .mini-sheet-wrap { min-height: 8.8rem; overflow-x: auto; }
     .mini-sheet {
       width: calc(100% - 2.4rem);
+      min-width: 980px;
       margin: 0.6rem 1.2rem 1.2rem;
       border-collapse: collapse;
-      font-size: 0.88rem;
+      font-size: 0.84rem;
+      font-family: Arial, Helvetica, sans-serif;
+      background: #fff;
+      color: #202124;
     }
-    .mini-sheet th, .mini-sheet td { text-align: left; padding: 0.45rem 0.6rem; border-bottom: 1px solid rgba(103, 232, 249, 0.14); }
-    .mini-sheet th { color: #93a1b8; font-weight: 700; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.06em; }
-    .mini-sheet td { color: #e6edf7; }
-    .st-new { color: #67e8f9; font-weight: 700; }
-    .st-updated { color: #f6b352; font-weight: 700; }
-    .st-off-market { color: #f87171; font-weight: 700; }
+    .mini-sheet th, .mini-sheet td { text-align: left; padding: 0.45rem 0.6rem; border: 1px solid #dadce0; white-space: nowrap; }
+    .mini-sheet th { background: #f0f4f9; color: #202124; font-weight: 700; font-size: 0.8rem; }
+    .mini-sheet td { color: #202124; }
     .terminal-note { margin: 0.8rem 0 0; color: var(--muted); font-size: 0.85rem; text-align: center; }
 
     /* ---------- stats band ---------- */
@@ -771,28 +772,28 @@
         </div>
         <div class="terminal-body" id="terminalBody">
           <div class="t-line cmd">$ inbox: 3 new alerts — Zillow, StreetEasy</div>
-          <div class="t-line dim">→ parsing "2BR · $2,450 · Bushwick" ...</div>
-          <div class="t-line ok">✓ row logged — status: new</div>
-          <div class="t-line dim">→ parsing "1BR · $1,900 · Bed-Stuy" ...</div>
-          <div class="t-line ok">✓ row logged — status: updated</div>
-          <div class="t-line dim">→ parsing "3BR · $3,100 · Crown Heights" ...</div>
-          <div class="t-line ok">✓ row logged — status: off market</div>
+          <div class="t-line dim">→ parsing alert 1: address, rent, broker, phone, email, URL</div>
+          <div class="t-line ok">✓ row created — 45 Prospect Pl #2, Brooklyn · $2,450 · Zillow · Contacted</div>
+          <div class="t-line dim">→ parsing alert 2: address, rent, broker, phone, email, URL</div>
+          <div class="t-line ok">✓ row created — 890 Fulton St #3B, Brooklyn · $2,600 · StreetEasy · Contacted</div>
+          <div class="t-line dim">→ parsing alert 3: address, rent, broker, phone, email, URL</div>
+          <div class="t-line ok">✓ row created — 12 Ocean Ave #1, Brooklyn · $2,700 · Zillow · Contacted</div>
           <div class="t-line cmd">$ 3 rows logged to Google Sheets.<span class="cursor" aria-hidden="true"></span></div>
         </div>
         <div class="mini-sheet-wrap">
           <table class="mini-sheet" aria-label="Sample sheet rows from the demo">
             <thead>
-              <tr><th>Listing</th><th>Rent</th><th>Status</th></tr>
+              <tr><th>Date Contacted</th><th>Property Address</th><th>Rent Amount</th><th>Voucher Variance</th><th>Source</th><th>Broker Name &amp; Contact</th><th>Status</th><th></th><th>Navigate</th><th>Notes</th></tr>
             </thead>
             <tbody id="miniSheetBody">
-              <tr><td>2BR · Bushwick</td><td>$2,450</td><td class="st-new">new</td></tr>
-              <tr><td>1BR · Bed-Stuy</td><td>$1,900</td><td class="st-updated">updated</td></tr>
-              <tr><td>3BR · Crown Heights</td><td>$3,100</td><td class="st-off-market">off market</td></tr>
+              <tr><td>2026-11-21 09:14:02</td><td>45 Prospect Pl #2, Brooklyn</td><td>$2,450</td><td>$184</td><td>Zillow</td><td>Dana K</td><td>Contacted</td><td>0</td><td>Start Route</td><td></td></tr>
+              <tr><td>2026-11-21 09:31:47</td><td>890 Fulton St #3B, Brooklyn</td><td>$2,600</td><td>$134</td><td>StreetEasy</td><td>Marcus T</td><td>Contacted</td><td>0</td><td>Start Route</td><td></td></tr>
+              <tr><td>2026-11-21 09:52:19</td><td>12 Ocean Ave #1, Brooklyn</td><td>$2,700</td><td>$34</td><td>Zillow</td><td>Priya S</td><td>Contacted</td><td>0</td><td></td><td></td></tr>
             </tbody>
           </table>
         </div>
       </div>
-      <p class="terminal-note">Demo with sample listings, not real alerts. The real build logs each alert the same way.</p>
+      <p class="terminal-note">Demo with sample listings, not real alerts. Same columns, same order as the live tracker.</p>
     </div>
   </section>
 
@@ -1073,12 +1074,12 @@
       /* ---------- live pipeline terminal ---------- */
       var T_LINES = [
         { t: '$ inbox: 3 new alerts — Zillow, StreetEasy', c: 'cmd' },
-        { t: '→ parsing "2BR · $2,450 · Bushwick" ...', c: 'dim' },
-        { t: '✓ row logged — status: new', c: 'ok', row: ['2BR · Bushwick', '$2,450', 'new'] },
-        { t: '→ parsing "1BR · $1,900 · Bed-Stuy" ...', c: 'dim' },
-        { t: '✓ row logged — status: updated', c: 'ok', row: ['1BR · Bed-Stuy', '$1,900', 'updated'] },
-        { t: '→ parsing "3BR · $3,100 · Crown Heights" ...', c: 'dim' },
-        { t: '✓ row logged — status: off market', c: 'ok', row: ['3BR · Crown Heights', '$3,100', 'off market'] },
+        { t: '→ parsing alert 1: address, rent, broker, phone, email, URL', c: 'dim' },
+        { t: '✓ row created — 45 Prospect Pl #2, Brooklyn · $2,450 · Zillow · Contacted', c: 'ok', row: ['2026-11-21 09:14:02', '45 Prospect Pl #2, Brooklyn', '$2,450', '$184', 'Zillow', 'Dana K', 'Contacted', '0', 'Start Route', ''] },
+        { t: '→ parsing alert 2: address, rent, broker, phone, email, URL', c: 'dim' },
+        { t: '✓ row created — 890 Fulton St #3B, Brooklyn · $2,600 · StreetEasy · Contacted', c: 'ok', row: ['2026-11-21 09:31:47', '890 Fulton St #3B, Brooklyn', '$2,600', '$134', 'StreetEasy', 'Marcus T', 'Contacted', '0', 'Start Route', ''] },
+        { t: '→ parsing alert 3: address, rent, broker, phone, email, URL', c: 'dim' },
+        { t: '✓ row created — 12 Ocean Ave #1, Brooklyn · $2,700 · Zillow · Contacted', c: 'ok', row: ['2026-11-21 09:52:19', '12 Ocean Ave #1, Brooklyn', '$2,700', '$34', 'Zillow', 'Priya S', 'Contacted', '0', '', ''] },
         { t: '$ 3 rows logged to Google Sheets.', c: 'cmd' }
       ];
       var termBody = document.getElementById('terminalBody');
@@ -1089,10 +1090,9 @@
         cursor.setAttribute('aria-hidden', 'true');
         function addRow(row) {
           var tr = document.createElement('tr');
-          row.forEach(function (cell, idx) {
+          row.forEach(function (cell) {
             var td = document.createElement('td');
             td.textContent = cell;
-            if (idx === 2) td.className = 'st-' + cell.replace(/ /g, '-');
             tr.appendChild(td);
           });
           sheetBody.appendChild(tr);
