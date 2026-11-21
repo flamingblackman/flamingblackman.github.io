@@ -48,6 +48,18 @@
       outline-offset: 3px;
     }
 
+    /* ---------- motion ---------- */
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes floaty { 0%, 100% { transform: translate(0, 0); } 50% { transform: translate(24px, -18px); } }
+    @keyframes blink { 0%, 49% { opacity: 1; } 50%, 100% { opacity: 0; } }
+    @keyframes gradientShift { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
+
+    .reveal { opacity: 0; transform: translateY(22px); transition: opacity .7s ease, transform .7s ease; }
+    .reveal.in { opacity: 1; transform: none; }
+    .skills-grid .skill-card:nth-child(2), .cert-grid .cert-card:nth-child(2), .project-grid .project-card:nth-child(2) { transition-delay: .08s; }
+    .skills-grid .skill-card:nth-child(3), .cert-grid .cert-card:nth-child(3), .project-grid .project-card:nth-child(3) { transition-delay: .16s; }
+    .project-grid .project-card:nth-child(4) { transition-delay: .24s; }
+
     .skip-link {
       position: absolute;
       left: 1rem;
@@ -121,6 +133,7 @@
     .nav-links a:hover { background: rgba(103, 232, 249, 0.12); color: #fff; }
 
     .hero {
+      position: relative;
       color: #fff;
       background:
         radial-gradient(circle at 82% 18%, rgba(103, 232, 249, 0.28), transparent 30%),
@@ -130,14 +143,27 @@
       border-bottom: 1px solid var(--line);
     }
 
+    .hero-orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(70px);
+      opacity: .5;
+      pointer-events: none;
+    }
+    .orb-a { width: 420px; height: 420px; background: rgba(103, 232, 249, .28); top: -120px; right: -60px; animation: floaty 14s ease-in-out infinite; }
+    .orb-b { width: 360px; height: 360px; background: rgba(244, 114, 182, .22); bottom: -140px; left: -80px; animation: floaty 18s ease-in-out infinite reverse; }
+
     .hero-inner {
+      position: relative;
+      z-index: 1;
       width: min(1120px, calc(100% - 2rem));
       margin: 0 auto;
-      padding: clamp(4rem, 9vw, 7.5rem) 0 clamp(4rem, 8vw, 6.5rem);
+      padding: clamp(4rem, 9vw, 7.5rem) 0 clamp(2.5rem, 5vw, 3.5rem);
       display: grid;
       grid-template-columns: minmax(0, 1.35fr) minmax(300px, 0.65fr);
       gap: clamp(2rem, 6vw, 5rem);
       align-items: center;
+      animation: fadeUp .8s ease both;
     }
 
     .eyebrow {
@@ -160,9 +186,11 @@
     @supports ((background-clip: text) or (-webkit-background-clip: text)) {
       h1 {
         background: linear-gradient(90deg, #a5f3fc 0%, var(--cyan) 40%, var(--magenta-bright) 100%);
+        background-size: 200% auto;
         -webkit-background-clip: text;
         background-clip: text;
         color: transparent;
+        animation: gradientShift 8s ease infinite;
       }
     }
 
@@ -180,21 +208,6 @@
       margin: 1.35rem 0 0;
       color: #b9c6d8;
       font-size: 1.08rem;
-      max-width: 650px;
-    }
-
-    .hero-pipeline {
-      margin-top: 1.5rem;
-      padding: 0.9rem 1rem;
-      border-radius: 13px;
-      background: rgba(7, 13, 28, 0.85);
-      border: 1px solid rgba(103, 232, 249, 0.25);
-      border-left: 3px solid var(--cyan);
-      color: #a5f3fc;
-      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-      font-size: 0.82rem;
-      line-height: 1.55;
-      overflow-wrap: anywhere;
       max-width: 650px;
     }
 
@@ -235,6 +248,7 @@
       border-radius: 24px;
       padding: 1.5rem;
       box-shadow: 0 24px 60px rgba(0, 0, 0, 0.55), 0 0 34px rgba(103, 232, 249, 0.12);
+      animation: fadeUp .8s .15s ease both;
     }
     .focus-card h2 {
       margin: 0 0 1rem;
@@ -255,6 +269,92 @@
     }
     .focus-list strong { display: block; color: #fff; font-size: 0.98rem; }
     .focus-list span { display: block; color: var(--muted); font-size: 0.92rem; line-height: 1.5; }
+
+    /* ---------- live pipeline terminal ---------- */
+    .terminal-wrap {
+      position: relative;
+      z-index: 1;
+      width: min(1120px, calc(100% - 2rem));
+      margin: 0 auto;
+      padding: 0 0 clamp(3rem, 6vw, 4.5rem);
+    }
+    .terminal {
+      background: #070d1c;
+      border: 1px solid rgba(103, 232, 249, 0.3);
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.55), 0 0 34px rgba(103, 232, 249, 0.12);
+    }
+    .terminal-bar {
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+      padding: 0.7rem 1rem;
+      background: #0c1326;
+      border-bottom: 1px solid var(--line);
+    }
+    .dot { width: 11px; height: 11px; border-radius: 50%; flex: none; }
+    .dot.r { background: #f87171; }
+    .dot.y { background: #fbbf24; }
+    .dot.g { background: #34d399; }
+    .terminal-title {
+      margin-left: 0.6rem;
+      color: var(--muted);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 0.8rem;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    .terminal-body {
+      padding: 1rem 1.2rem 0.4rem;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 0.88rem;
+      line-height: 1.7;
+      color: #c3cede;
+      min-height: 12.8rem;
+    }
+    .t-line.cmd { color: #a5f3fc; }
+    .t-line.dim { color: #7d8aa5; }
+    .t-line.ok { color: #86efac; }
+    .cursor {
+      display: inline-block;
+      width: 0.55em;
+      height: 1.05em;
+      background: var(--cyan);
+      vertical-align: text-bottom;
+      margin-left: 2px;
+      animation: blink 1s steps(1) infinite;
+    }
+    .mini-sheet-wrap { min-height: 8.8rem; }
+    .mini-sheet {
+      width: calc(100% - 2.4rem);
+      margin: 0.6rem 1.2rem 1.2rem;
+      border-collapse: collapse;
+      font-size: 0.88rem;
+    }
+    .mini-sheet th, .mini-sheet td { text-align: left; padding: 0.45rem 0.6rem; border-bottom: 1px solid rgba(103, 232, 249, 0.14); }
+    .mini-sheet th { color: var(--muted); font-weight: 700; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.06em; }
+    .mini-sheet td { color: var(--ink); }
+    .st-new { color: #67e8f9; font-weight: 700; }
+    .st-updated { color: #f6b352; font-weight: 700; }
+    .st-off-market { color: #f87171; font-weight: 700; }
+    .terminal-note { margin: 0.8rem 0 0; color: var(--muted); font-size: 0.85rem; text-align: center; }
+
+    /* ---------- stats band ---------- */
+    .stats-band { border-bottom: 1px solid var(--line); background: rgba(12, 19, 38, 0.6); }
+    .stats-inner {
+      width: min(1120px, calc(100% - 2rem));
+      margin: 0 auto;
+      padding: 2.2rem 0;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+      text-align: center;
+    }
+    .stat-num { display: block; font-size: clamp(2rem, 4vw, 2.8rem); font-weight: 800; color: #fff; letter-spacing: -0.03em; }
+    .stat-label { color: var(--muted); font-size: 0.92rem; }
+    .stats-note { grid-column: 1 / -1; margin: 0; color: var(--muted); font-size: 0.88rem; }
 
     main { overflow: hidden; }
     .section {
@@ -348,12 +448,24 @@
 
     .project-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     .project-card {
+      position: relative;
       padding: clamp(1.5rem, 3vw, 2rem);
       display: flex;
       flex-direction: column;
       min-height: 100%;
       transition: transform 160ms ease, border-color 160ms ease, box-shadow 160ms ease;
     }
+    .project-card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      background: radial-gradient(320px circle at var(--mx, 50%) var(--my, 50%), rgba(103, 232, 249, 0.14), transparent 65%);
+      opacity: 0;
+      transition: opacity 0.25s ease;
+      pointer-events: none;
+    }
+    .project-card:hover::after { opacity: 1; }
     .project-card:hover {
       transform: translateY(-3px);
       border-color: rgba(103, 232, 249, 0.45);
@@ -460,18 +572,20 @@
       .nav-links a { padding-left: 0.45rem; padding-right: 0.45rem; }
       .hero-inner { padding-top: 3.4rem; }
       .skills-grid, .cert-grid { grid-template-columns: 1fr; }
+      .stats-inner { grid-template-columns: 1fr 1fr; }
       .experience-list li { flex-direction: column; gap: 0.15rem; }
       .experience-list time { white-space: normal; }
       .button { width: 100%; }
       .hero-actions .button, .contact-actions .button { width: auto; }
+      .terminal-body { font-size: 0.8rem; min-height: 14.5rem; }
     }
 
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
-      .button { transition: none; }
-      .button:hover { transform: none; }
-      .project-card { transition: none; }
-      .project-card:hover { transform: none; }
+      *, *::before, *::after { animation: none !important; transition: none !important; }
+      .reveal { opacity: 1; transform: none; }
+      .hero-inner, .focus-card { animation: none; }
+      .button:hover, .project-card:hover { transform: none; }
     }
   </style>
 </head>
@@ -495,13 +609,14 @@
   </header>
 
   <section class="hero" id="top" aria-labelledby="page-title">
+    <span class="hero-orb orb-a" aria-hidden="true"></span>
+    <span class="hero-orb orb-b" aria-hidden="true"></span>
     <div class="hero-inner">
       <div>
         <p class="eyebrow">Brooklyn, New York · Available immediately for remote work</p>
         <h1 id="page-title">Bryan Francis</h1>
         <p class="hero-role">Revenue operations and automation.</p>
         <p class="hero-copy">I build systems that move work through a pipeline. A Zapier automation with AI-generated JavaScript parses listing alerts into one Google Sheets row per listing, duplicates blocked, status tracked as new, updated, or off market. As a freelance technical recruiter I ran candidate pipelines: sourcing, screening, and stage tracking. HubSpot Revenue Operations certified. At DecisionOne I resolved 89% of cases on first contact.</p>
-        <div class="hero-pipeline" aria-label="Pipeline, in one line">Alert email in → AI-generated JavaScript parses it → one row per listing → status tracked</div>
         <div class="hero-actions" aria-label="Portfolio links">
           <a class="button button-primary" href="#projects">View projects</a>
           <a class="button button-secondary" href="https://www.linkedin.com/in/bfrancis360" target="_blank" rel="noopener noreferrer">LinkedIn</a>
@@ -532,6 +647,62 @@
           </li>
         </ul>
       </aside>
+    </div>
+
+    <div class="terminal-wrap reveal">
+      <div class="terminal" aria-label="Live demo of the lead-tracking pipeline: three sample listing alerts parsed and logged as rows in a sheet">
+        <div class="terminal-bar">
+          <span class="dot r" aria-hidden="true"></span>
+          <span class="dot y" aria-hidden="true"></span>
+          <span class="dot g" aria-hidden="true"></span>
+          <span class="terminal-title">pipeline — live demo · sample listings</span>
+        </div>
+        <div class="terminal-body" id="terminalBody">
+          <div class="t-line cmd">$ inbox: 3 new alerts — Zillow, StreetEasy</div>
+          <div class="t-line dim">→ parsing "2BR · $2,450 · Bushwick" ...</div>
+          <div class="t-line ok">✓ row logged — status: new</div>
+          <div class="t-line dim">→ parsing "1BR · $1,900 · Bed-Stuy" ...</div>
+          <div class="t-line ok">✓ row logged — status: updated</div>
+          <div class="t-line dim">→ parsing "3BR · $3,100 · Crown Heights" ...</div>
+          <div class="t-line ok">✓ row logged — status: off market</div>
+          <div class="t-line cmd">$ 3 rows logged to Google Sheets.<span class="cursor" aria-hidden="true"></span></div>
+        </div>
+        <div class="mini-sheet-wrap">
+          <table class="mini-sheet" aria-label="Sample sheet rows from the demo">
+            <thead>
+              <tr><th>Listing</th><th>Rent</th><th>Status</th></tr>
+            </thead>
+            <tbody id="miniSheetBody">
+              <tr><td>2BR · Bushwick</td><td>$2,450</td><td class="st-new">new</td></tr>
+              <tr><td>1BR · Bed-Stuy</td><td>$1,900</td><td class="st-updated">updated</td></tr>
+              <tr><td>3BR · Crown Heights</td><td>$3,100</td><td class="st-off-market">off market</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <p class="terminal-note">Demo with sample listings, not real alerts. The real build logs each alert the same way.</p>
+    </div>
+  </section>
+
+  <section class="stats-band" aria-label="Job hunt funnel snapshot">
+    <div class="stats-inner reveal">
+      <div class="stat">
+        <span class="stat-num" data-count="303">303</span>
+        <span class="stat-label">Applications submitted</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num" data-count="14">14</span>
+        <span class="stat-label">Employer responses</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num"><span data-count="4.6" data-decimals="1">4.6</span>%</span>
+        <span class="stat-label">Response rate</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num" data-count="1">1</span>
+        <span class="stat-label">Interview</span>
+      </div>
+      <p class="stats-note">Live from the tracker, Nov 21, 2026. 0 offers so far — the funnel doesn't hide that.</p>
     </div>
   </section>
 
@@ -586,7 +757,7 @@
       </div>
 
       <div class="skills-grid">
-        <article class="skill-card">
+        <article class="skill-card reveal">
           <h3>Automation and RevOps</h3>
           <ul class="chip-list">
             <li>Zapier</li>
@@ -602,7 +773,7 @@
           </ul>
         </article>
 
-        <article class="skill-card">
+        <article class="skill-card reveal">
           <h3>Systems and platforms</h3>
           <ul class="chip-list">
             <li>Active Directory (AD)</li>
@@ -616,7 +787,7 @@
           </ul>
         </article>
 
-        <article class="skill-card">
+        <article class="skill-card reveal">
           <h3>IT support</h3>
           <ul class="chip-list">
             <li>Technical Support</li>
@@ -639,17 +810,17 @@
       </div>
 
       <div class="cert-grid">
-        <article class="cert-card">
+        <article class="cert-card reveal">
           <h3>HubSpot Revenue Operations Certification</h3>
           <p>Revenue operations training covering the systems and processes that connect go-to-market teams.</p>
           <p class="issuer">HubSpot · Earned October 19, 2026</p>
         </article>
-        <article class="cert-card">
+        <article class="cert-card reveal">
           <h3>CompTIA ITF+</h3>
           <p>Foundational IT concepts, infrastructure, software, security, and troubleshooting.</p>
           <p class="issuer">CompTIA</p>
         </article>
-        <article class="cert-card">
+        <article class="cert-card reveal">
           <h3>Google IT Support Professional Certificate</h3>
           <p>Professional training in IT support, systems administration basics, networking, and security.</p>
           <p class="issuer">Google / Coursera</p>
@@ -665,7 +836,7 @@
       </div>
 
       <div class="project-grid">
-        <article class="project-card">
+        <article class="project-card reveal">
           <span class="project-label">Flagship project</span>
           <h3>LLM State-Tracking Lab</h3>
           <p>A test environment asking whether a prompt-engineered LLM can keep coherent state across long sessions. Structured turn blocks, self-audits every 5 turns, a human audit gate, and a NotebookLM retrieval corpus. Reference implementation: a Jujutsu Kaisen saga, clean test re-run 17 PASS / 0 PARTIAL / 0 FAIL.</p>
@@ -679,7 +850,7 @@
           <a class="project-link" href="https://github.com/flamingblackman/llm-state-tracking-lab" target="_blank" rel="noopener noreferrer">View the repository</a>
         </article>
 
-        <article class="project-card">
+        <article class="project-card reveal">
           <span class="project-label">Automation project</span>
           <h3>Real Estate Lead Tracking Automation</h3>
           <p>A Zapier workflow that parses Zillow and StreetEasy alert emails into one Google Sheets row per listing, duplicates blocked, status tracked as new, updated, or off market. I built it for my own apartment search, and it replaced checking both sites by hand. I directed the build and used AI-generated JavaScript to parse the details into a structured record.</p>
@@ -694,7 +865,7 @@
           <a class="project-link" href="https://github.com/flamingblackman/lead-tracking-automation" target="_blank" rel="noopener noreferrer">View the repository</a>
         </article>
 
-        <article class="project-card">
+        <article class="project-card reveal">
           <span class="project-label">Building now</span>
           <h3>Client Onboarding Portal</h3>
           <p>An intake portal for client onboarding: a form feeds a Sheets log, and a status dashboard flags what needs attention — New intakes over one business day, follow-up dates on Contacted, clean close-out on Onboarded. Intake form and log sheet are live; the Zaps come next.</p>
@@ -708,7 +879,7 @@
           <span class="project-note">Sheet + intake form live; Zaps next — repo coming.</span>
         </article>
 
-        <article class="project-card">
+        <article class="project-card reveal">
           <span class="project-label">Technical depth</span>
           <h3>Ironwild Living World Engine</h3>
           <p>A deterministic tick engine for a forked original mecha world: seed in, ticks out, hash-chained event log. Python 3 stdlib + SQLite, no LLM ever writes state. 105 tests passing, Phase 2 building. An AI-assisted build I directed and verified against acceptance checks.</p>
@@ -762,5 +933,109 @@
     <span>© 2026 Bryan Francis · Brooklyn, New York</span>
     <span><a href="#top">Back to top</a></span>
   </footer>
+
+  <script>
+    (function () {
+      var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      /* ---------- live pipeline terminal ---------- */
+      var T_LINES = [
+        { t: '$ inbox: 3 new alerts — Zillow, StreetEasy', c: 'cmd' },
+        { t: '→ parsing "2BR · $2,450 · Bushwick" ...', c: 'dim' },
+        { t: '✓ row logged — status: new', c: 'ok', row: ['2BR · Bushwick', '$2,450', 'new'] },
+        { t: '→ parsing "1BR · $1,900 · Bed-Stuy" ...', c: 'dim' },
+        { t: '✓ row logged — status: updated', c: 'ok', row: ['1BR · Bed-Stuy', '$1,900', 'updated'] },
+        { t: '→ parsing "3BR · $3,100 · Crown Heights" ...', c: 'dim' },
+        { t: '✓ row logged — status: off market', c: 'ok', row: ['3BR · Crown Heights', '$3,100', 'off market'] },
+        { t: '$ 3 rows logged to Google Sheets.', c: 'cmd' }
+      ];
+      var termBody = document.getElementById('terminalBody');
+      var sheetBody = document.getElementById('miniSheetBody');
+      if (termBody && sheetBody && !reduceMotion) {
+        var cursor = document.createElement('span');
+        cursor.className = 'cursor';
+        cursor.setAttribute('aria-hidden', 'true');
+        function addRow(row) {
+          var tr = document.createElement('tr');
+          row.forEach(function (cell, idx) {
+            var td = document.createElement('td');
+            td.textContent = cell;
+            if (idx === 2) td.className = 'st-' + cell.replace(/ /g, '-');
+            tr.appendChild(td);
+          });
+          sheetBody.appendChild(tr);
+        }
+        function typeLine(line, done) {
+          var div = document.createElement('div');
+          div.className = 't-line ' + line.c;
+          termBody.appendChild(div);
+          var i = 0;
+          (function step() {
+            div.textContent = line.t.slice(0, ++i);
+            div.appendChild(cursor);
+            if (i < line.t.length) setTimeout(step, 16);
+            else { if (line.row) addRow(line.row); setTimeout(done, 340); }
+          })();
+        }
+        function run() {
+          termBody.innerHTML = '';
+          sheetBody.innerHTML = '';
+          var n = 0;
+          (function next() {
+            if (n < T_LINES.length) typeLine(T_LINES[n++], next);
+            else setTimeout(run, 4200);
+          })();
+        }
+        run();
+      }
+
+      /* ---------- scroll reveal ---------- */
+      var revealEls = document.querySelectorAll('.reveal');
+      if (!reduceMotion && 'IntersectionObserver' in window) {
+        var io = new IntersectionObserver(function (entries) {
+          entries.forEach(function (e) {
+            if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+          });
+        }, { threshold: 0.12 });
+        revealEls.forEach(function (el) { io.observe(el); });
+      } else {
+        revealEls.forEach(function (el) { el.classList.add('in'); });
+      }
+
+      /* ---------- count-up stats ---------- */
+      function countUp(el) {
+        var target = parseFloat(el.getAttribute('data-count'));
+        var dec = parseInt(el.getAttribute('data-decimals') || '0', 10);
+        var dur = 1200;
+        var start = null;
+        function tick(now) {
+          if (start === null) start = now;
+          var p = Math.min((now - start) / dur, 1);
+          var eased = 1 - Math.pow(1 - p, 3);
+          el.textContent = (target * eased).toFixed(dec);
+          if (p < 1) requestAnimationFrame(tick);
+        }
+        requestAnimationFrame(tick);
+      }
+      var counters = document.querySelectorAll('[data-count]');
+      if (!reduceMotion && 'IntersectionObserver' in window) {
+        var cio = new IntersectionObserver(function (entries) {
+          entries.forEach(function (e) {
+            if (e.isIntersecting) { countUp(e.target); cio.unobserve(e.target); }
+          });
+        }, { threshold: 0.4 });
+        counters.forEach(function (el) { cio.observe(el); });
+      }
+
+      /* ---------- project card glow follows the mouse ---------- */
+      document.querySelectorAll('.project-card').forEach(function (card) {
+        card.addEventListener('mousemove', function (e) {
+          var r = card.getBoundingClientRect();
+          card.style.setProperty('--mx', (e.clientX - r.left) + 'px');
+          card.style.setProperty('--my', (e.clientY - r.top) + 'px');
+        });
+      });
+    })();
+  </script>
 </body>
 </html>
